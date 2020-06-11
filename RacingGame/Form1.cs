@@ -15,20 +15,17 @@ namespace RacingGame
     {
         Graphics g;
         Pen p = new Pen(Color.White, 5);
-        Line l1;
-        Line l2;
-        Line l3;
-        Line l4;
+        List<Line> lines = new List<Line>();
         int moveSpeed = 15;
         public Car MyCar { get; set; }
         private Image MyCarImage { get; set; }
         public Form1()
         {
             InitializeComponent();
-            l1 = new Line(0);
-            l2 = new Line(200);
-            l3 = new Line(400);
-            l4 = new Line(-200);
+            lines.Add(new Line(0));
+            lines.Add(new Line(200));
+            lines.Add(new Line(400));
+            lines.Add(new Line(-200));
             MyCar = new Car();
             MyCarImage = Resources.myCar;
 
@@ -36,25 +33,9 @@ namespace RacingGame
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            l1.line.Y += moveSpeed;
-            l2.line.Y += moveSpeed;
-            l3.line.Y += moveSpeed;
-            l4.line.Y += moveSpeed;
-            if (l3.line.Y >= 600)
+            foreach(Line l in lines)
             {
-                l3.line.Y = -200;
-            }
-            if (l2.line.Y >= 600)
-            {
-                l2.line.Y = -200;
-            }
-            if (l1.line.Y >= 600)
-            {
-                l1.line.Y = -200;
-            }
-            if (l4.line.Y >= 600)
-            {
-                l4.line.Y = -200;
+                l.MoveLine(moveSpeed);
             }
             Invalidate();
         }
@@ -65,10 +46,10 @@ namespace RacingGame
             Pen p = new Pen(Color.White, 5);
             g.DrawLine(p, 20, 0, 20, 800);
             g.DrawLine(p, 420, 0, 420, 800);
-            l1.Draw(g);
-            l2.Draw(g);
-            l3.Draw(g);
-            l4.Draw(g);
+            foreach (Line l in lines)
+            {
+                l.Draw(g);
+            }
             e.Graphics.DrawImageUnscaled(MyCarImage, MyCar.Location);
             g.Dispose();
         }
