@@ -1,12 +1,7 @@
 ﻿using RacingGame.Properties;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RacingGame
@@ -14,8 +9,8 @@ namespace RacingGame
     public partial class Form1 : Form
     {
         Graphics g;
-        Pen p = new Pen(Color.White, 5);
         List<Line> lines = new List<Line>();
+        List<Car> cars = new List<Car>();
         int moveSpeed = 15;
         public Car MyCar { get; set; }
         private Image MyCarImage { get; set; }
@@ -26,9 +21,10 @@ namespace RacingGame
             lines.Add(new Line(200));
             lines.Add(new Line(400));
             lines.Add(new Line(-200));
-            MyCar = new Car();
-            MyCarImage = Resources.myCar;
-
+            MyCar = new Car(new Point(50, 500), Resources.myCar);
+            cars.Add(new Car(new Point(50, -100), Resources.car1));
+            cars.Add(new Car(new Point(200, -340), Resources.car2));
+            cars.Add(new Car(new Point(300, -600), Resources.car3));
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -36,6 +32,11 @@ namespace RacingGame
             foreach(Line l in lines)
             {
                 l.MoveLine(moveSpeed);
+            }
+
+            foreach(Car c in cars)
+            {
+                c.Drive(0, moveSpeed, 0, 0);
             }
             Invalidate();
         }
@@ -50,7 +51,12 @@ namespace RacingGame
             {
                 l.Draw(g);
             }
-            e.Graphics.DrawImageUnscaled(MyCarImage, MyCar.Location);
+            foreach(Car c in cars)
+            {
+                c.setImage(e);
+            }
+            MyCar.setImage(e);
+
             g.Dispose();
         }
 
