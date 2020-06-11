@@ -23,5 +23,19 @@ namespace RacingGame
             g.DrawRectangle(p, line);
             g.FillRectangle(b, line);
         }
+
+        public void RestartLine()
+        {
+            if (line.Y >= 600)
+            {
+                line.Y = -200;
+            }
+        }
+
+        public void MoveLine(int moveSpeed)
+        {
+            RestartLine();
+            line.Y += moveSpeed;
+        }
     }
 }

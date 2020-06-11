@@ -1,11 +1,7 @@
-﻿using System;
+﻿using RacingGame.Properties;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RacingGame
@@ -13,43 +9,34 @@ namespace RacingGame
     public partial class Form1 : Form
     {
         Graphics g;
-        Pen p = new Pen(Color.White, 5);
-        Line l1;
-        Line l2;
-        Line l3;
-        Line l4;
+        List<Line> lines = new List<Line>();
+        List<Car> cars = new List<Car>();
         int moveSpeed = 15;
-        float moveLineDown = 200;
+        public Car MyCar { get; set; }
+        private Image MyCarImage { get; set; }
         public Form1()
         {
             InitializeComponent();
-            l1 = new Line(0);
-            l2 = new Line(200);
-            l3 = new Line(400);
-            l4 = new Line(-200);
+            lines.Add(new Line(0));
+            lines.Add(new Line(200));
+            lines.Add(new Line(400));
+            lines.Add(new Line(-200));
+            MyCar = new Car(new Point(50, 500), Resources.myCar);
+            cars.Add(new Car(new Point(50, -100), Resources.car1));
+            cars.Add(new Car(new Point(200, -340), Resources.car2));
+            cars.Add(new Car(new Point(300, -600), Resources.car3));
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            l1.line.Y += moveSpeed;
-            l2.line.Y += moveSpeed;
-            l3.line.Y += moveSpeed;
-            l4.line.Y += moveSpeed;
-            if (l3.line.Y >= 600)
+            foreach(Line l in lines)
             {
-                l3.line.Y = -200;
+                l.MoveLine(moveSpeed);
             }
-            if (l2.line.Y >= 600)
+
+            foreach(Car c in cars)
             {
-                l2.line.Y = -200;
-            }
-            if (l1.line.Y >= 600)
-            {
-                l1.line.Y = -200;
-            }
-            if (l4.line.Y >= 600)
-            {
-                l4.line.Y = -200;
+                c.Drive(0, moveSpeed, 0, 0);
             }
             Invalidate();
         }
@@ -60,11 +47,45 @@ namespace RacingGame
             Pen p = new Pen(Color.White, 5);
             g.DrawLine(p, 20, 0, 20, 800);
             g.DrawLine(p, 420, 0, 420, 800);
-            l1.Draw(g);
-            l2.Draw(g);
-            l3.Draw(g);
-            l4.Draw(g);
+            foreach (Line l in lines)
+            {
+                l.Draw(g);
+            }
+            foreach(Car c in cars)
+            {
+                c.setImage(e);
+            }
+            MyCar.setImage(e);
+
             g.Dispose();
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                MyCar.Drive(10,0,0,0);
+                if (moveSpeed < 30)
+                {
+                    moveSpeed += 3;
+                }
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                MyCar.Drive(0, 10, 0, 0);
+                if (moveSpeed > 18)
+                {
+                    moveSpeed -= 3;
+                }
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                MyCar.Drive(0, 0, 10, 0);
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                MyCar.Drive(0, 0, 0, 10);
+            }
         }
     }
 }
