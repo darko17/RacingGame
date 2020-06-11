@@ -63,9 +63,9 @@ namespace RacingGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _64_512 {
+        internal static System.Drawing.Bitmap myCar {
             get {
-                object obj = ResourceManager.GetObject("64-512", resourceCulture);
+                object obj = ResourceManager.GetObject("myCar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
