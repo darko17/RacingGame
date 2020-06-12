@@ -1,5 +1,6 @@
 ﻿
 using RacingGame.Properties;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,7 +11,8 @@ namespace RacingGame
         public Point Location { get; set; }
 
         private Image CarImage { get; set; }
-        public int Delete { get; set; }
+
+        private static readonly Random random = new Random();
 
         public Car(Point p, Bitmap image)
         {
@@ -27,6 +29,10 @@ namespace RacingGame
             else
             {
                 Location = new Point(Location.X, Location.Y + down);
+                if (Location.Y >= 600)
+                {
+                    RestartCars();
+                }
             }
         }
 
@@ -40,6 +46,23 @@ namespace RacingGame
         public void setImage(PaintEventArgs e)
         {
             e.Graphics.DrawImageUnscaled(CarImage, Location);
+        }
+
+        private void RestartCars()
+        {
+            int randomNum3 = random.Next(0, 100);
+            if (randomNum3 < 33)
+            {
+                Location = new Point(random.Next(0, 90), -200 - random.Next(0, 300));
+            }
+            else if (randomNum3 > 34 && randomNum3 < 66)
+            {
+                Location = new Point(random.Next(105, 200), -250 - random.Next(0, 300));
+            }
+            else
+            {
+                Location = new Point(random.Next(215, 330), -300 - random.Next(0, 300));
+            }
         }
     }
 }
