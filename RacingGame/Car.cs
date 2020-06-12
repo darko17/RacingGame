@@ -22,7 +22,7 @@ namespace RacingGame
         {
             Location = p;
             CarImage = image;
-            car = new Rectangle(Location.X, Location.Y, 36, 120);
+            car = new Rectangle(Location.X, Location.Y, 36, 90);
         }
 
         public void Drive(int up, int down, int left, int rigth, bool isMyCar = true)

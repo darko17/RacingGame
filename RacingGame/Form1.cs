@@ -8,9 +8,9 @@ namespace RacingGame
 {
     public partial class Form1 : Form
     {
-        List<Line> lines = new List<Line>();
+        List<Line> lines;
 
-        List<Car> cars = new List<Car>();
+        List<Car> cars;
 
         int moveSpeed = 13;
 
@@ -19,14 +19,8 @@ namespace RacingGame
         public Form1()
         {
             InitializeComponent();
-            lines.Add(new Line(0));
-            lines.Add(new Line(200));
-            lines.Add(new Line(400));
-            lines.Add(new Line(-200));
-            MyCar = new Car(new Point(50, 500), Resources.myCar);
-            cars.Add(new Car(new Point(50, -100), Resources.car1));
-            cars.Add(new Car(new Point(200, -340), Resources.car2));
-            cars.Add(new Car(new Point(300, -600), Resources.car3));
+            //timer1.Stop();
+            initLists();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -39,7 +33,10 @@ namespace RacingGame
             foreach(Car c in cars)
             {
                 c.Drive(0, moveSpeed, 0, 0, false);
-                c.IsHit(MyCar);
+                if (c.IsHit(MyCar))
+                {
+                    GameOver(1);
+                }
             }
             Invalidate();
         }
@@ -53,7 +50,7 @@ namespace RacingGame
             {
                 l.Draw(e.Graphics);
             }
-            foreach(Car c in cars)
+            foreach (Car c in cars)
             {
                 c.Draw(e.Graphics);
                 c.setImage(e);
@@ -88,6 +85,42 @@ namespace RacingGame
             {
                 MyCar.Drive(0, 0, 0, 15);
             }
+        }
+
+        public void GameOver(int coins)
+        {
+            timer1.Stop();
+            GameOver gameOver = new GameOver(1);
+            if (gameOver.ShowDialog()== DialogResult.OK)
+            {
+                gameOver.Close();
+                StartGame();
+            }
+            else if (gameOver.ShowDialog() == DialogResult.No)
+            {
+                gameOver.Close();
+                Application.Exit();
+            }
+        }
+
+        public void StartGame()
+        {
+            initLists();
+            timer1.Start();
+        }
+
+        public void initLists()
+        {
+            lines = new List<Line>();
+            cars = new List<Car>();
+            lines.Add(new Line(0));
+            lines.Add(new Line(200));
+            lines.Add(new Line(400));
+            lines.Add(new Line(-200));
+            MyCar = new Car(new Point(50, 500), Resources.myCar);
+            cars.Add(new Car(new Point(50, -100), Resources.car1));
+            cars.Add(new Car(new Point(200, -340), Resources.car2));
+            cars.Add(new Car(new Point(300, -600), Resources.car3));
         }
     }
 }
