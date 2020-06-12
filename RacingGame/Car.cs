@@ -14,8 +14,6 @@ namespace RacingGame
 
         private static readonly Random random = new Random();
 
-        private GraphicsUnit units = GraphicsUnit.Point;
-
         Rectangle car;
 
         public Car(Point p, Bitmap image)
