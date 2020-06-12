@@ -65,6 +65,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(582, 753);
             this.Controls.Add(this.menuStrip1);
+            this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(600, 800);
             this.MinimumSize = new System.Drawing.Size(600, 800);
