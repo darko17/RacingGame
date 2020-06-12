@@ -39,6 +39,7 @@ namespace RacingGame
             foreach(Car c in cars)
             {
                 c.Drive(0, moveSpeed, 0, 0, false);
+                c.IsHit(MyCar);
             }
             Invalidate();
         }
@@ -54,6 +55,7 @@ namespace RacingGame
             }
             foreach(Car c in cars)
             {
+                c.Draw(e.Graphics);
                 c.setImage(e);
             }
             MyCar.setImage(e);
