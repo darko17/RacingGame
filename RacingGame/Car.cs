@@ -26,7 +26,7 @@ namespace RacingGame
             {
                 Location = new Point(Location.X + rigth - left, Location.Y - up + down);
             }
-            else
+            if (!isMyCar)
             {
                 Location = new Point(Location.X, Location.Y + down);
                 if (Location.Y >= 600)

@@ -7,8 +7,6 @@ namespace RacingGame
 {
     public class Line
     {
-        Pen p = new Pen(Color.White);
-        Brush b = new SolidBrush(Color.White);
         public Rectangle line;
         public int y;
 
@@ -20,11 +18,15 @@ namespace RacingGame
 
         public void Draw(Graphics g)
         {
+            Pen p = new Pen(Color.White);
+            Brush b = new SolidBrush(Color.White);
             g.DrawRectangle(p, line);
             g.FillRectangle(b, line);
+            p.Dispose();
+            b.Dispose();
         }
 
-        public void RestartLine()
+        private void RestartLine()
         {
             if (line.Y >= 600)
             {
