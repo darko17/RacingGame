@@ -22,7 +22,7 @@ namespace RacingGame
             CarImage = image;
             car = new Rectangle(Location.X, Location.Y, 36, 90);
         }
-
+        //testing
         public void Drive(int up, int down, int left, int rigth, bool isMyCar = true)
         {
             if (car.Location.X + rigth <= 340 && car.Location.X - left >= 0 && car.Location.Y + down <= 500 && car.Location.Y - up >= 20 && isMyCar)
