@@ -191,8 +191,8 @@ namespace RacingGame
             cars.Add(new Car(new Point(50, -100), Resources.car1));
             cars.Add(new Car(new Point(200, -340), Resources.car2));
             cars.Add(new Car(new Point(300, -600), Resources.car3));
-            coins.Add(new Coin(new Point(150, -600), Resources.coin));
-            f = new Fuel(new Point(300, -600), Resources.fuel);
+            coins.Add(new Coin(new Point(150, -300), Resources.coin));
+            f = new Fuel(new Point(350, -600), Resources.fuel);
             moveSpeed = 4;
         }
 
