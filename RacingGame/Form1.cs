@@ -12,7 +12,9 @@ namespace RacingGame
 
         List<Car> cars;
 
-        int moveSpeed = 13;
+        List<Coin> coins;
+
+        int moveSpeed = 3;
 
         public Car MyCar { get; set; }
 
@@ -38,6 +40,14 @@ namespace RacingGame
                     GameOver(1);
                 }
             }
+            foreach (Coin c in coins)
+            {
+                c.Drive(moveSpeed,c);
+                if (c.IsHit(MyCar))
+                {
+                    coinsUp(c);
+                }
+            }
             Invalidate();
         }
 
@@ -51,6 +61,11 @@ namespace RacingGame
                 l.Draw(e.Graphics);
             }
             foreach (Car c in cars)
+            {
+                c.Draw(e.Graphics);
+                c.setImage(e);
+            }
+            foreach (Coin c in coins)
             {
                 c.Draw(e.Graphics);
                 c.setImage(e);
@@ -109,10 +124,17 @@ namespace RacingGame
             timer1.Start();
         }
 
+        public void coinsUp(Coin c)
+        {
+            txtCoinsNumber.Text = (Convert.ToInt32(txtCoinsNumber.Text) + 1).ToString();
+            c.RestartCoins();
+        }
+
         public void initLists()
         {
             lines = new List<Line>();
             cars = new List<Car>();
+            coins = new List<Coin>();
             lines.Add(new Line(0));
             lines.Add(new Line(200));
             lines.Add(new Line(400));
@@ -121,6 +143,8 @@ namespace RacingGame
             cars.Add(new Car(new Point(50, -100), Resources.car1));
             cars.Add(new Car(new Point(200, -340), Resources.car2));
             cars.Add(new Car(new Point(300, -600), Resources.car3));
+            coins.Add(new Coin(new Point(300, -600), Resources.coin));
         }
+
     }
 }
