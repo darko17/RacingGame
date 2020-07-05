@@ -34,7 +34,10 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.txtCoins = new System.Windows.Forms.Label();
             this.txtCoinsNumber = new System.Windows.Forms.Label();
+            this.fuelProgressBar = new System.Windows.Forms.PictureBox();
+            this.lblFuel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fuelProgressBar)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -78,12 +81,32 @@
             this.txtCoinsNumber.TabIndex = 3;
             this.txtCoinsNumber.Text = "0";
             // 
+            // fuelProgressBar
+            // 
+            this.fuelProgressBar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.fuelProgressBar.Location = new System.Drawing.Point(86, 31);
+            this.fuelProgressBar.Name = "fuelProgressBar";
+            this.fuelProgressBar.Size = new System.Drawing.Size(250, 20);
+            this.fuelProgressBar.TabIndex = 4;
+            this.fuelProgressBar.TabStop = false;
+            // 
+            // lblFuel
+            // 
+            this.lblFuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.98507F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFuel.Location = new System.Drawing.Point(12, 31);
+            this.lblFuel.Name = "lblFuel";
+            this.lblFuel.Size = new System.Drawing.Size(68, 28);
+            this.lblFuel.TabIndex = 5;
+            this.lblFuel.Text = "Fuel:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(580, 748);
+            this.Controls.Add(this.lblFuel);
+            this.Controls.Add(this.fuelProgressBar);
             this.Controls.Add(this.txtCoinsNumber);
             this.Controls.Add(this.txtCoins);
             this.Controls.Add(this.menuStrip1);
@@ -97,6 +120,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fuelProgressBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,6 +132,8 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label txtCoins;
         private System.Windows.Forms.Label txtCoinsNumber;
+        private System.Windows.Forms.PictureBox fuelProgressBar;
+        private System.Windows.Forms.Label lblFuel;
     }
 }
 

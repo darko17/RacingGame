@@ -14,7 +14,13 @@ namespace RacingGame
 
         List<Coin> coins;
 
+        Fuel f;
+
         int moveSpeed = 3;
+
+        int progressBarWidth = 250;
+
+        int fuelTemp = 0;
 
         public Car MyCar { get; set; }
 
@@ -48,6 +54,20 @@ namespace RacingGame
                     coinsUp(c);
                 }
             }
+
+            f.Drive(moveSpeed, f);
+            if (f.IsHit(MyCar))
+                fuelUp(f);
+
+            if (fuelTemp == 10)
+            {
+                fuelProgressBar.Size = new System.Drawing.Size(progressBarWidth, 20);
+                progressBarWidth--;
+                fuelTemp = 0;
+            }
+            fuelTemp++;
+
+
             Invalidate();
         }
 
@@ -70,6 +90,10 @@ namespace RacingGame
                 c.Draw(e.Graphics);
                 c.setImage(e);
             }
+
+            f.Draw(e.Graphics);
+            f.setImage(e);
+
             MyCar.setImage(e);
             p.Dispose();
         }
@@ -105,13 +129,14 @@ namespace RacingGame
         public void GameOver(int coins)
         {
             timer1.Stop();
-            GameOver gameOver = new GameOver(1);
+            GameOver gameOver = new GameOver(Convert.ToInt32(txtCoinsNumber.Text));
 
             DialogResult result = gameOver.ShowDialog();
 
             if (result == DialogResult.OK)
             {
                 gameOver.Close();
+                txtCoinsNumber.Text = "0";
                 StartGame();
             }
             else if (result == DialogResult.Cancel)
@@ -133,6 +158,18 @@ namespace RacingGame
             c.RestartCoins();
         }
 
+        public void fuelUp(Fuel f)
+        {
+            if (progressBarWidth + 30 < 250)
+            {
+                fuelProgressBar.Size = new System.Drawing.Size(progressBarWidth += 30, 20);
+            }
+            else
+                fuelProgressBar.Size = new System.Drawing.Size(progressBarWidth = 250, 20);
+
+            f.RestartFuel();
+        }
+
         public void initLists()
         {
             lines = new List<Line>();
@@ -146,7 +183,8 @@ namespace RacingGame
             cars.Add(new Car(new Point(50, -100), Resources.car1));
             cars.Add(new Car(new Point(200, -340), Resources.car2));
             cars.Add(new Car(new Point(300, -600), Resources.car3));
-            coins.Add(new Coin(new Point(300, -600), Resources.coin));
+            coins.Add(new Coin(new Point(150, -600), Resources.coin));
+            f = new Fuel(new Point(300, -600), Resources.fuel);
         }
 
     }
