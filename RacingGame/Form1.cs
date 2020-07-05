@@ -106,12 +106,15 @@ namespace RacingGame
         {
             timer1.Stop();
             GameOver gameOver = new GameOver(1);
-            if (gameOver.ShowDialog()== DialogResult.OK)
+
+            DialogResult result = gameOver.ShowDialog();
+
+            if (result == DialogResult.OK)
             {
                 gameOver.Close();
                 StartGame();
             }
-            else if (gameOver.ShowDialog() == DialogResult.No)
+            else if (result == DialogResult.Cancel)
             {
                 gameOver.Close();
                 Application.Exit();
