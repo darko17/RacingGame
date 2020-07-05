@@ -103,6 +103,16 @@ namespace RacingGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fuel {
+            get {
+                object obj = ResourceManager.GetObject("fuel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap myCar {
             get {
                 object obj = ResourceManager.GetObject("myCar", resourceCulture);
