@@ -83,7 +83,7 @@
             // 
             // fuelProgressBar
             // 
-            this.fuelProgressBar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.fuelProgressBar.BackColor = System.Drawing.Color.Orange;
             this.fuelProgressBar.Location = new System.Drawing.Point(86, 31);
             this.fuelProgressBar.Name = "fuelProgressBar";
             this.fuelProgressBar.Size = new System.Drawing.Size(250, 20);
