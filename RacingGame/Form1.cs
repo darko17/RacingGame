@@ -16,7 +16,7 @@ namespace RacingGame
 
         Fuel f;
 
-        int moveSpeed = 3;
+        int moveSpeed;
 
         int progressBarWidth = 250;
 
@@ -57,7 +57,11 @@ namespace RacingGame
 
             f.Drive(moveSpeed, f);
             if (f.IsHit(MyCar))
+            {
                 fuelUp(f);
+                if ((Convert.ToInt32(txtCoinsNumber.Text)) == 10 || (Convert.ToInt32(txtCoinsNumber.Text)) == 20 || (Convert.ToInt32(txtCoinsNumber.Text)) == 30)
+                    moveSpeed++;
+            }
 
             if (fuelTemp == 7)
             {
@@ -66,7 +70,6 @@ namespace RacingGame
 
                 if (fuelProgressBar.Size.Width <= 0)
                     GameOver((Convert.ToInt32(txtCoinsNumber.Text)));
-
 
                 fuelTemp = 0;
             }
@@ -190,6 +193,7 @@ namespace RacingGame
             cars.Add(new Car(new Point(300, -600), Resources.car3));
             coins.Add(new Coin(new Point(150, -600), Resources.coin));
             f = new Fuel(new Point(300, -600), Resources.fuel);
+            moveSpeed = 4;
         }
 
     }
