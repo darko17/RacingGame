@@ -82,7 +82,9 @@ Widows forms project by : Darko Romovski 153132 and Martin Peshovski 156011.
 
 
 ## 4 GUI
+<img src="RacingGame/start.png" width="350" title="hover text">
+
 <img src="RacingGame/playing.png" width="350" title="hover text">
 
-
+<img src="RacingGame/gameover.png" width="350" title="hover text">
 
