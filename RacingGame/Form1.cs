@@ -16,7 +16,7 @@ namespace RacingGame
 
         Fuel f;
 
-        int moveSpeed;
+        public int moveSpeed { get; set; }
 
         int progressBarWidth = 250;
 
@@ -24,8 +24,9 @@ namespace RacingGame
 
         public Car MyCar { get; set; }
 
-        public Form1()
+        public Form1(int moveSpeed)
         {
+            this.moveSpeed = moveSpeed;
             InitializeComponent();
             //timer1.Stop();
             initLists();
@@ -137,7 +138,7 @@ namespace RacingGame
         public void GameOver(int coins)
         {
             timer1.Stop();
-            GameOver gameOver = new GameOver(coins);
+            GameOver gameOver = new GameOver(coins, true);
 
             DialogResult result = gameOver.ShowDialog();
 
@@ -191,9 +192,8 @@ namespace RacingGame
             cars.Add(new Car(new Point(50, -100), Resources.car1));
             cars.Add(new Car(new Point(200, -340), Resources.car2));
             cars.Add(new Car(new Point(300, -600), Resources.car3));
-            coins.Add(new Coin(new Point(150, -600), Resources.coin));
-            f = new Fuel(new Point(300, -600), Resources.fuel);
-            moveSpeed = 4;
+            coins.Add(new Coin(new Point(150, -300), Resources.coin));
+            f = new Fuel(new Point(350, -600), Resources.fuel);
         }
 
     }

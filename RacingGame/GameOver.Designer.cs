@@ -32,6 +32,7 @@
             this.BtnNewGame = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblPoints = new System.Windows.Forms.Label();
+            this.ddlLevel = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -40,9 +41,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(106, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(213, 46);
+            this.label1.Size = new System.Drawing.Size(208, 51);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Game Over!!!";
+            this.label1.Text = "Start Game";
             // 
             // BtnNewGame
             // 
@@ -69,14 +70,28 @@
             this.lblPoints.AutoSize = true;
             this.lblPoints.Location = new System.Drawing.Point(34, 63);
             this.lblPoints.Name = "lblPoints";
-            this.lblPoints.Size = new System.Drawing.Size(0, 17);
+            this.lblPoints.Size = new System.Drawing.Size(0, 16);
             this.lblPoints.TabIndex = 3;
+            // 
+            // ddlLevel
+            // 
+            this.ddlLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlLevel.FormattingEnabled = true;
+            this.ddlLevel.Items.AddRange(new object[] {
+            "EASY",
+            "MEDIUM",
+            "HARD"});
+            this.ddlLevel.Location = new System.Drawing.Point(230, 63);
+            this.ddlLevel.Name = "ddlLevel";
+            this.ddlLevel.Size = new System.Drawing.Size(140, 24);
+            this.ddlLevel.TabIndex = 4;
             // 
             // GameOver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(430, 213);
+            this.Controls.Add(this.ddlLevel);
             this.Controls.Add(this.lblPoints);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.BtnNewGame);
@@ -94,5 +109,6 @@
         private System.Windows.Forms.Button BtnNewGame;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblPoints;
+        private System.Windows.Forms.ComboBox ddlLevel;
     }
 }

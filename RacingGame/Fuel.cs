@@ -50,12 +50,12 @@ namespace RacingGame
 
         public void RestartFuel()
         {
-            int randomNum3 = random.Next(0, 100);
-            if (randomNum3 < 33)
+            int randomNum = random.Next(0, 10) * 10;
+            if (randomNum < 33)
             {
                 fuel.Location = new Point(random.Next(0, 90), -200 - random.Next(0, 300));
             }
-            else if (randomNum3 > 34 && randomNum3 < 66)
+            else if (randomNum > 34 && randomNum < 66)
             {
                 fuel.Location = new Point(random.Next(105, 200), -250 - random.Next(0, 300));
             }
