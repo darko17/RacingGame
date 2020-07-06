@@ -140,6 +140,7 @@ namespace RacingGame
             timer1.Stop();
             GameOver gameOver = new GameOver(coins, true);
 
+
             DialogResult result = gameOver.ShowDialog();
 
             if (result == DialogResult.OK)
@@ -154,6 +155,7 @@ namespace RacingGame
                 gameOver.Close();
                 Application.Exit();
             }
+            moveSpeed = gameOver.gameOverSpeed;
         }
 
         public void StartGame()
