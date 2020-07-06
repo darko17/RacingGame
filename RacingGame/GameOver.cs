@@ -12,6 +12,7 @@ namespace RacingGame
 {
     public partial class GameOver : Form
     {
+        public int gameOverSpeed { get; set; }
         private int coins;
         private bool flag;
         public GameOver(int coins)
@@ -43,7 +44,6 @@ namespace RacingGame
 
                     DialogResult = DialogResult.OK;
 
-                    form.moveSpeed = 4;
                 }
 
                 else
@@ -51,7 +51,7 @@ namespace RacingGame
                     DialogResult = DialogResult.OK;
 
                 }
-
+                gameOverSpeed = 4;
             }
 
             else if (ddlLevel.SelectedIndex == 1)
@@ -65,8 +65,6 @@ namespace RacingGame
 
                     DialogResult = DialogResult.OK;
 
-                    form.moveSpeed = 5;
-
 
                 }
 
@@ -76,6 +74,7 @@ namespace RacingGame
 
                 }
 
+                gameOverSpeed = 6;
 
             }
 
@@ -90,8 +89,6 @@ namespace RacingGame
 
                     DialogResult = DialogResult.OK;
 
-                    form.moveSpeed = 6;
-
 
                 }
 
@@ -99,8 +96,9 @@ namespace RacingGame
                 {
                     DialogResult = DialogResult.OK;
 
-                    //moveSpeed = 7;
                 }
+                gameOverSpeed = 8;
+
             }
 
 
