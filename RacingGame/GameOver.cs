@@ -34,20 +34,22 @@ namespace RacingGame
 
             if (ddlLevel.SelectedIndex == 0)
             {
-                if(!flag)
+                if (!flag)
                 {
 
-                Form1 form = new Form1(4);
+                    Form1 form = new Form1(4);
 
-                DialogResult result = form.ShowDialog();
+                    DialogResult result = form.ShowDialog();
 
-                DialogResult = DialogResult.OK;
+                    DialogResult = DialogResult.OK;
 
+                    form.moveSpeed = 4;
                 }
 
                 else
                 {
                     DialogResult = DialogResult.OK;
+
                 }
 
             }
@@ -62,6 +64,9 @@ namespace RacingGame
                     DialogResult result = form.ShowDialog();
 
                     DialogResult = DialogResult.OK;
+
+                    form.moveSpeed = 5;
+
 
                 }
 
@@ -84,6 +89,9 @@ namespace RacingGame
                     DialogResult result = form.ShowDialog();
 
                     DialogResult = DialogResult.OK;
+
+                    form.moveSpeed = 6;
+
 
                 }
 

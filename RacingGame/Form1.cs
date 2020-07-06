@@ -146,6 +146,7 @@ namespace RacingGame
             {
                 gameOver.Close();
                 txtCoinsNumber.Text = "0";
+                fuelProgressBar.Size = new System.Drawing.Size(progressBarWidth = 250, 20);
                 StartGame();
             }
             else if (result == DialogResult.Cancel)
