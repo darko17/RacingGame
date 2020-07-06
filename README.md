@@ -82,6 +82,7 @@ Widows forms project by : Darko Romovski 153132 and Martin Peshovski 156011.
 
 
 ## 4 GUI
+<img src="http://prntscr.com/td0i1s" width="350" title="hover text">
 
 
 
